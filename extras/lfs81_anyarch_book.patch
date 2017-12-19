@@ -1,0 +1,183 @@
+diff -Naur origlfs-8.1/chapter05/binutils-pass1.xml lfs8.1anyarch/chapter05/binutils-pass1.xml
+--- origlfs-8.1/chapter05/binutils-pass1.xml	2017-12-19 20:59:12.000000000 +0000
++++ lfs8.1anyarch/chapter05/binutils-pass1.xml	2017-12-19 21:46:41.315993327 +0000
+@@ -151,6 +151,7 @@
+ 
+ <screen><userinput remap="install">case $(uname -m) in
+   x86_64) mkdir -v /tools/lib &amp;&amp; ln -sv lib /tools/lib64 ;;
++  ppc64) mkdir -v /tools/lib &amp;&amp; ln -sv lib /tools/lib64 ;;
+ esac</userinput></screen>
+ 
+     <para>Install the package:</para>
+diff -Naur origlfs-8.1/chapter05/gcc-pass1.xml lfs8.1anyarch/chapter05/gcc-pass1.xml
+--- origlfs-8.1/chapter05/gcc-pass1.xml	2017-12-19 20:59:12.000000000 +0000
++++ lfs8.1anyarch/chapter05/gcc-pass1.xml	2017-12-19 22:11:12.095052029 +0000
+@@ -68,7 +68,7 @@
+     class="directory">/usr/include</filename> from GCC's include search path.
+     Issue:</para>
+ 
+-<screen><userinput remap="pre">for file in gcc/config/{linux,i386/linux{,64}}.h
++<screen><userinput remap="pre">for file in gcc/config/{linux,*/*}.h
+ do
+   cp -uv $file{,.orig}
+   sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&amp;@g' \
+@@ -235,9 +235,18 @@
+ 
+     </variablelist>
+ 
++    <para> Workaround a build problem with GMP:</para>
++
++    <screen><userinput remap="pre"> 
++    case $(uname -m) in
++      armv5l) sed -i 's/none-/armv5l-/' Makefile ;;
++      armv6l) sed -i 's/none-/armv6l-/' Makefile ;;
++      armv7l) sed -i 's/none-/armv7l-/' Makefile ;;
++    esac </userinput></screen>
++
+     <para>Compile GCC by running:</para>
+ 
+-<screen><userinput remap="make">make</userinput></screen>
++<screen><userinput remap="make"> make</userinput></screen>
+ 
+     <para>Compilation is now complete. At this point, the test suite would
+     normally be run, but, as mentioned before, the test suite framework is
+diff -Naur origlfs-8.1/chapter05/gcc-pass2.xml lfs8.1anyarch/chapter05/gcc-pass2.xml
+--- origlfs-8.1/chapter05/gcc-pass2.xml	2017-12-19 20:59:12.000000000 +0000
++++ lfs8.1anyarch/chapter05/gcc-pass2.xml	2017-12-19 22:11:54.064165771 +0000
+@@ -70,7 +70,7 @@
+     use the one installed in <filename
+     class="directory">/tools</filename>.</para>
+ 
+-<screen><userinput remap="pre">for file in gcc/config/{linux,i386/linux{,64}}.h
++<screen><userinput remap="pre">for file in gcc/config/{linux,*/*}.h
+ do
+   cp -uv $file{,.orig}
+   sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&amp;@g' \
+@@ -168,6 +168,15 @@
+ 
+     </variablelist>
+ 
++    <para> Workaround a build problem with GMP:</para>
++
++    <screen><userinput remap="pre"> 
++    case $(uname -m) in
++      armv5l) sed -i 's/none-/armv5l-/' Makefile ;;
++      armv6l) sed -i 's/none-/armv6l-/' Makefile ;;
++      armv7l) sed -i 's/none-/armv7l-/' Makefile ;;
++    esac </userinput></screen>
++
+     <para>Compile the package:</para>
+ 
+ <screen><userinput remap="make">make</userinput></screen>
+diff -Naur origlfs-8.1/chapter06/adjusting.xml lfs8.1anyarch/chapter06/adjusting.xml
+--- origlfs-8.1/chapter06/adjusting.xml	2017-12-19 20:59:13.000000000 +0000
++++ lfs8.1anyarch/chapter06/adjusting.xml	2017-12-19 21:46:41.319993440 +0000
+@@ -16,13 +16,13 @@
+ 
+   <para>First, backup the <filename class="directory">/tools</filename> linker,
+   and replace it with the adjusted linker we made in chapter 5. We'll also create
+-  a link to its counterpart in
+-  <filename class="directory">/tools/$(uname -m)-pc-linux-gnu/bin</filename>:</para>
++  a link to its counterpart in <filename class="directory">/tools/$(gcc
++  -dumpmachine)/bin</filename>:</para>
+ 
+ <screen><userinput>mv -v /tools/bin/{ld,ld-old}
+-mv -v /tools/$(uname -m)-pc-linux-gnu/bin/{ld,ld-old}
++mv -v /tools/$(gcc -dumpmachine)/bin/{ld,ld-old}
+ mv -v /tools/bin/{ld-new,ld}
+-ln -sv /tools/bin/ld /tools/$(uname -m)-pc-linux-gnu/bin/ld</userinput></screen>
++ln -sv /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld</userinput></screen>
+ 
+   <para>Next, amend the GCC specs file so that it points to the new
+   dynamic linker. Simply deleting all instances of <quote>/tools</quote> should
+diff -Naur origlfs-8.1/chapter06/chapter06.xml lfs8.1anyarch/chapter06/chapter06.xml
+--- origlfs-8.1/chapter06/chapter06.xml	2017-12-19 20:59:13.000000000 +0000
++++ lfs8.1anyarch/chapter06/chapter06.xml	2017-12-19 21:47:51.609978587 +0000
+@@ -69,7 +69,6 @@
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gawk.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="findutils.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="groff.xml"/>
+-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="grub.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="less.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gzip.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iproute2.xml"/>
+diff -Naur origlfs-8.1/chapter06/creatingdirs.xml lfs8.1anyarch/chapter06/creatingdirs.xml
+--- origlfs-8.1/chapter06/creatingdirs.xml	2017-12-19 20:59:13.000000000 +0000
++++ lfs8.1anyarch/chapter06/creatingdirs.xml	2017-12-19 21:49:58.605609822 +0000
+@@ -25,6 +25,9 @@
+ 
+ case $(uname -m) in
+  x86_64) mkdir -v /lib64 ;;
++ ppc64) ln -sv lib /lib64 ;;
++# ?? XXX       ln -sv lib /usr/lib64
++#         ln -sv lib /usr/local/lib64 ;;
+ esac
+ 
+ mkdir -v /var/{log,mail,spool}
+diff -Naur origlfs-8.1/chapter06/libcap.xml lfs8.1anyarch/chapter06/libcap.xml
+--- origlfs-8.1/chapter06/libcap.xml	2017-12-19 20:59:13.000000000 +0000
++++ lfs8.1anyarch/chapter06/libcap.xml	2017-12-19 21:46:41.319993440 +0000
+@@ -47,6 +47,13 @@
+ 
+ <screen><userinput remap="pre">sed -i '/install.*STALIBNAME/d' libcap/Makefile</userinput></screen>
+ 
++    <para>Make a fix for ppc64 support:</para>
++
++<screen><userinput remap="pre">case $(uname -m) in
++ ppc64) sed -i 's@ld-linux|ld.so@ld-linux|ld.so|ld64.so@' Make.Rules ;;
++ *) ;;
++esac </userinput></screen>
++
+     <para>Compile the package:</para>
+ 
+ <screen><userinput remap="make">make</userinput></screen>
+diff -Naur origlfs-8.1/chapter06/revisedchroot.xml lfs8.1anyarch/chapter06/revisedchroot.xml
+--- origlfs-8.1/chapter06/revisedchroot.xml	2017-12-19 20:59:13.000000000 +0000
++++ lfs8.1anyarch/chapter06/revisedchroot.xml	2017-12-19 21:46:41.319993440 +0000
+@@ -46,12 +46,12 @@
+   libraries are from binutils, bzip2, e2fsprogs, flex, libtool, and zlib.  If desired,
+   remove them now:</para>
+ 
+-<screen><userinput>rm -f /usr/lib/lib{bfd,opcodes}.a
+-rm -f /usr/lib/libbz2.a
+-rm -f /usr/lib/lib{com_err,e2p,ext2fs,ss}.a
+-rm -f /usr/lib/libltdl.a
+-rm -f /usr/lib/libfl.a
+-rm -f /usr/lib/libfl_pic.a
+-rm -f /usr/lib/libz.a</userinput></screen>
++<screen><userinput>#rm -f /usr/lib/lib{bfd,opcodes}.a
++#rm -f /usr/lib/libbz2.a
++#rm -f /usr/lib/lib{com_err,e2p,ext2fs,ss}.a
++#rm -f /usr/lib/libltdl.a
++#rm -f /usr/lib/libfl.a
++#rm -f /usr/lib/libfl_pic.a
++#rm -f /usr/lib/libz.a</userinput></screen>
+ 
+ </sect1>
+diff -Naur origlfs-8.1/chapter08/kernel.xml lfs8.1anyarch/chapter08/kernel.xml
+--- origlfs-8.1/chapter08/kernel.xml	2017-12-19 20:59:14.000000000 +0000
++++ lfs8.1anyarch/chapter08/kernel.xml	2017-12-19 22:19:58.885489906 +0000
+@@ -210,7 +210,7 @@
+ 
+     <para>Install the modules, if the kernel configuration uses them:</para>
+ 
+-<screen><userinput remap="install">make modules_install</userinput></screen>
++<screen><userinput remap="install">make INSTALL_MOD_STRIP=1 modules_install</userinput></screen>
+ 
+     <para>After kernel compilation is complete, additional steps are
+     required to complete the installation. Some files need to be copied to
+@@ -231,7 +231,13 @@
+     the automatic setup of the boot process described in the next section.  The
+     following command assumes an x86 architecture:</para>
+ 
+-<screen revision="sysv"><userinput remap="install">cp -v arch/x86/boot/bzImage /boot/vmlinuz-&linux-version;-lfs-&version;</userinput></screen>
++<screen revision="sysv"><userinput remap="install">case $(uname -m) in
++      x86_64) cp -v arch/x86/boot/bzImage /boot/vmlinuz-&linux-version;-lfs-&version; ;;
++      *86) cp -v arch/x86/boot/bzImage /boot/vmlinuz-&linux-version;-lfs-&version; ;;
++      ppc*) cp -v vmlinux /boot/vmlinuz-&linux-version;-lfs-&version; ;;
++      arm*) cp -v vmlinux /boot/vmlinuz-&linux-version;-lfs-&version; ;;
++      esac
++</userinput></screen>
+ 
+ <screen revision="systemd"><userinput remap="install">cp -v arch/x86/boot/bzImage /boot/vmlinuz-&linux-version;-lfs-&versiond;</userinput></screen>
+ 
