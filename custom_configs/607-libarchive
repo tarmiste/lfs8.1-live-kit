@@ -6,17 +6,17 @@
 #
 
 PKG="libarchive"
-PKG_VERSION="libarchive-3.1.2.tar.gz"
-PKG_FILE="libarchive-3.1.2.tar.gz"
-URL="http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz"
-MD5="efad5a503f66329bb9d2f4308b5de98a"
+PKG_VERSION="libarchive-3.3.2.tar.gz"
+PKG_FILE="libarchive-3.3.2.tar.gz"
+URL="http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz"
+MD5="4583bd6b2ebf7e0e8963d90879eb1b27"
 for i in PATCH{1..10}; do
    unset $i
 done
-PATCH1="http://www.linuxfromscratch.org/patches/blfs/svn/libarchive-3.1.2-upstream_fixes-1.patch 8d0f6ab4a181a77b5e55571c1ce2dac3"
+PATCH1=""
 
 ( cat << "xEOFx"
-   patch -Np1 -i ../libarchive-3.1.2-upstream_fixes-1.patch &&
+   #patch -Np1 -i ../libarchive-3.3.2-upstream_fixes-1.patch &&
    ./configure --prefix=/usr &&
    make
    #make -k check || true
