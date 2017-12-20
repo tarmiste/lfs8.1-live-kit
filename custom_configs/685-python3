@@ -21,10 +21,10 @@ PATCH1=""
                --enable-shared     \
                --with-system-expat \
                --with-system-ffi   \
-               --without-ensurepip &&
+               --with-ensurepip=yes &&
    make
    make -j1 install &&
-   chmod -v 755 /usr/lib/libpython3.5m.so &&
+   chmod -v 755 /usr/lib/libpython3.6m.so &&
    chmod -v 755 /usr/lib/libpython3.so
    #make -k test || true
 

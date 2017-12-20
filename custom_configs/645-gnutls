@@ -17,6 +17,7 @@ PATCH1=""
 
 ( cat << "xEOFx"
    ./configure --prefix=/usr \
+               --with-included-unistring \
                --with-default-trust-store-file=/etc/ssl/ca-bundle.crt &&
    make
    #make -k check || true

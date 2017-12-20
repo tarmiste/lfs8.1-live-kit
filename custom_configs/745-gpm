@@ -10,9 +10,11 @@ MD5="bf84143905a6a903dbd4d4b911a2a2b8"
 for i in PATCH{1..10}; do
    unset $i
 done
+PATCH1="http://www.linuxfromscratch.org/patches/blfs/8.1/gpm-1.20.7-glibc_2.26-1.patch 802caefec3613f56adf1d8bf4cb15145"
 
 ( cat << "xEOFx"
 
+cat ../gpm-1.20.7-glibc_2.26-1.patch |patch -Np1
 ./autogen.sh                                &&
 ./configure --prefix=/usr --sysconfdir=/etc &&
 make
