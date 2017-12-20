@@ -6,9 +6,9 @@
 #
 
 PKG="doxygen"
-PKG_VERSION="doxygen-1.8.11.src.tar.gz"
-PKG_FILE="doxygen-1.8.11.src.tar.gz"
-URL="ftp://ftp.stack.nl/pub/doxygen/doxygen-1.8.11.src.tar.gz"
+PKG_VERSION="doxygen-1.8.13.src.tar.gz"
+PKG_FILE="doxygen-1.8.13.src.tar.gz"
+URL="ftp://ftp.stack.nl/pub/doxygen/doxygen-1.8.13.src.tar.gz"
 MD5="0fa414975f8cd6d30e126c28327c1f7c"
 for i in PATCH{1..10}; do
    unset $i
@@ -27,7 +27,7 @@ PATCH1=""
    make
    #make -k tests || true
 
-   #cmake -DDOC_INSTALL_DIR=share/doc/doxygen-1.8.11 -Dbuild_doc=ON .. &&
+   #cmake -DDOC_INSTALL_DIR=share/doc/doxygen-1.8.13 -Dbuild_doc=ON .. &&
    #make docs
 
    make -j1 install &&

@@ -6,9 +6,9 @@
 #
 
 PKG="openssh"
-PKG_VERSION="openssh-7.1p2.tar.gz"
-PKG_FILE="openssh-7.1p2.tar.gz"
-URL="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p2.tar.gz"
+PKG_VERSION="openssh-7.5p1.tar.gz"
+PKG_FILE="openssh-7.5p1.tar.gz"
+URL="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.5p1.tar.gz"
 MD5="652fdc7d8392f112bef11cacf7e69e23"
 for i in PATCH{1..10}; do
    unset $i
@@ -36,9 +36,9 @@ PATCH1=""
    
    install -v -m644    contrib/ssh-copy-id.1 \
                        /usr/share/man/man1              &&
-   install -v -m755 -d /usr/share/doc/openssh-7.1p2     &&
+   install -v -m755 -d /usr/share/doc/openssh-7.5p1     &&
    install -v -m644    INSTALL LICENCE OVERVIEW README* \
-                       /usr/share/doc/openssh-7.1p2
+                       /usr/share/doc/openssh-7.5p1
    
    #echo "PermitRootLogin no" >> /etc/ssh/sshd_config
    

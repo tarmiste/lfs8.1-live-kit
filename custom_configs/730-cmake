@@ -6,9 +6,9 @@
 #
 
 PKG="cmake"
-PKG_VERSION="cmake-3.4.3.tar.gz"
-PKG_FILE="cmake-3.4.3.tar.gz"
-URL="http://www.cmake.org/files/v3.4/cmake-3.4.3.tar.gz"
+PKG_VERSION="cmake-3.9.1.tar.gz"
+PKG_FILE="cmake-3.9.1.tar.gz"
+URL="http://www.cmake.org/files/v3.4/cmake-3.9.1.tar.gz"
 MD5="00f43c6a56d4903436317c14f9ca7f37"
 for i in PATCH{1..10}; do
    unset $i
@@ -20,7 +20,7 @@ PATCH1=""
                --system-libs       \
                --mandir=/share/man \
                --no-system-jsoncpp \
-               --docdir=/share/doc/cmake-3.4.3 &&
+               --docdir=/share/doc/cmake-3.9.1 &&
    make
    #make -k  || true
    make -j1 install

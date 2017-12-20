@@ -6,9 +6,9 @@
 #
 
 PKG="wget"
-PKG_VERSION="wget-1.17.1.tar.xz"
-PKG_FILE="wget-1.17.1.tar.xz"
-URL="http://ftp.gnu.org/gnu/wget/wget-1.17.1.tar.xz"
+PKG_VERSION="wget-1.19.1.tar.xz"
+PKG_FILE="wget-1.19.1.tar.xz"
+URL="http://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz"
 MD5="d30d82186b93fcabb4116ff513bfa9bd"
 for i in PATCH{1..10}; do
    unset $i

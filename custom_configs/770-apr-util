@@ -6,9 +6,9 @@
 #
 
 PKG="apr-util"
-PKG_VERSION="apr-util-1.5.4.tar.bz2"
-PKG_FILE="apr-util-1.5.4.tar.bz2"
-URL="http://archive.apache.org/dist/apr/apr-util-1.5.4.tar.bz2"
+PKG_VERSION="apr-util-1.6.0.tar.bz2"
+PKG_FILE="apr-util-1.6.0.tar.bz2"
+URL="http://archive.apache.org/dist/apr/apr-util-1.6.0.tar.bz2"
 MD5="069a9a980776acab05212c5f37ef8368"
 for i in PATCH{1..10}; do
    unset $i

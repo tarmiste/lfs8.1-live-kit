@@ -9,7 +9,7 @@
 #
 
 PKG="openssl"
-PKG_VERSION="1.0.2g"
+PKG_VERSION="1.1.0f"
 PKG_FILE="openssl-${PKG_VERSION}.tar.gz"
 URL="ftp://ftp.openssl.org/source/${PKG_FILE}"
 MD5="7b521dea79ab159e8ec879d2333369fa"
@@ -44,8 +44,8 @@ make
 make test
 #sed -i 's# libcrypto.a##;s# libssl.a##' Makefile   # why is this commented?
 make MANDIR=/usr/share/man MANSUFFIX=ssl install &&
-install -dv -m755 /usr/share/doc/openssl-1.0.2g  &&
-cp -vfr doc/*     /usr/share/doc/openssl-1.0.2g
+install -dv -m755 /usr/share/doc/openssl-1.1.0f  &&
+cp -vfr doc/*     /usr/share/doc/openssl-1.1.0f
 
 #
 # Now install certificates

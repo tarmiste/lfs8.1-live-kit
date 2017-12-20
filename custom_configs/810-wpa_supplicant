@@ -6,9 +6,9 @@
 #
 
 PKG="wpa_supplicant"
-PKG_VERSION="wpa_supplicant-2.5.tar.gz"
-PKG_FILE="wpa_supplicant-2.5.tar.gz"
-URL="http://hostap.epitest.fi/releases/wpa_supplicant-2.5.tar.gz"
+PKG_VERSION="wpa_supplicant-2.6.tar.gz"
+PKG_FILE="wpa_supplicant-2.6.tar.gz"
+URL="http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz"
 MD5="091569eb4440b7d7f2b4276dbfc03c3c"
 for i in PATCH{1..10}; do
    unset $i
