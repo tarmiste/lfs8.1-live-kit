@@ -9,7 +9,7 @@ PKG="scons"
 PKG_VERSION="scons-2.4.1.tar.gz"
 PKG_FILE="scons-2.4.1.tar.gz"
 URL="http://downloads.sourceforge.net/scons/scons-2.4.1.tar.gz"
-MD5="9a0ddf33d9839f04380e0fae87cc4b40"
+MD5="aaaf09e1351a598f98d17b0cf1103e7a"
 for i in PATCH{1..10}; do
    unset $i
 done

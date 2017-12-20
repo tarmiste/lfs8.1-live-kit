@@ -9,7 +9,7 @@ PKG="p11-kit"
 PKG_VERSION="p11-kit-0.23.2.tar.gz"
 PKG_FILE="p11-kit-0.23.2.tar.gz"
 URL="http://p11-glue.freedesktop.org/releases/p11-kit-0.23.2.tar.gz"
-MD5="738af2442331fc22f440df9bee9b062a"
+MD5="3caf26d841df1527d52549e7adc62966"
 for i in PATCH{1..10}; do
    unset $i
 done
@@ -22,4 +22,3 @@ PATCH1=""
    make -j1 install
 xEOFx
 ) > tmp
-

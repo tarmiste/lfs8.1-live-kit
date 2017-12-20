@@ -9,7 +9,7 @@ PKG="sudo"
 PKG_VERSION="sudo-1.8.15.tar.gz"
 PKG_FILE="sudo-1.8.15.tar.gz"
 URL="http://www.sudo.ws/dist/sudo-1.8.15.tar.gz"
-MD5="7cf6b9b76d0478a572432bed481dd7b5"
+MD5="03da8e711caca6fd93e57751bfb74adc"
 for i in PATCH{1..10}; do
    unset $i
 done

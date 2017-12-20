@@ -9,7 +9,7 @@ PKG="curl"
 PKG_VERSION="curl-7.47.1.tar.lzma"
 PKG_FILE="curl-7.47.1.tar.lzma"
 URL="https://curl.haxx.se/download/curl-7.47.1.tar.lzma"
-MD5="8242c073d8e5fc1c2a1aa946f1e903a4"
+MD5="ac4a59c38c47adc160ea71eace20257b"
 for i in PATCH{1..10}; do
    unset $i
 done

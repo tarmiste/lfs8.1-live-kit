@@ -9,7 +9,7 @@ PKG="gnutls"
 PKG_VERSION="gnutls-3.4.9.tar.xz"
 PKG_FILE="gnutls-3.4.9.tar.xz"
 URL="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.4/gnutls-3.4.9.tar.xz"
-MD5="1b3b6d55d0e2b6d01a54f53129f1da9b"
+MD5="1e84b57a472b5f3b01f2c1b7a3a2bcbe"
 for i in PATCH{1..10}; do
    unset $i
 done

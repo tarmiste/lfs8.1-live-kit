@@ -9,7 +9,7 @@ PKG="apr"
 PKG_VERSION="apr-1.5.2.tar.bz2"
 PKG_FILE="apr-1.5.2.tar.bz2"
 URL="http://archive.apache.org/dist/apr/apr-1.5.2.tar.bz2"
-MD5="4e9769f3349fe11fc0a5e1b224c236aa"
+MD5="e81a851967c79b5ce9bfbc909e4bf735"
 for i in PATCH{1..10}; do
    unset $i
 done

@@ -9,7 +9,7 @@ PKG="libnl"
 PKG_VERSION="libnl-3.2.27.tar.gz"
 PKG_FILE="libnl-3.2.27.tar.gz"
 URL="https://github.com/thom311/libnl/releases/download/libnl3_2_27/libnl-3.2.27.tar.gz"
-MD5="cec19f941b79a38d9eb92dbc171d6dbd"
+MD5="ab3ef137cad95bdda5ff0ffa5175dfa5"
 for i in PATCH{1..10}; do
    unset $i
 done

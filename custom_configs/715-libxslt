@@ -9,7 +9,7 @@ PKG="libxslt"
 PKG_VERSION="libxslt-1.1.28.tar.gz"
 PKG_FILE="libxslt-1.1.28.tar.gz"
 URL="ftp://xmlsoft.org/libxslt/libxslt-1.1.28.tar.gz"
-MD5="9667bf6f9310b957254fdcf6596600b7"
+MD5="a129d3c44c022de3b9dcf6d6f288d72e"
 for i in PATCH{1..10}; do
    unset $i
 done

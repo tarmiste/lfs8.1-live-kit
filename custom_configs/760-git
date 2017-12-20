@@ -9,7 +9,7 @@ PKG="git"
 PKG_VERSION="git-2.7.1.tar.xz"
 PKG_FILE="git-2.7.1.tar.xz"
 URL="https://www.kernel.org/pub/software/scm/git/git-2.7.1.tar.xz"
-MD5="eece7b1e87983271621a0cb6aab37a25"
+MD5="a55bc6a2164d3ef1c3e5fc2f0c1d0d52"
 for i in PATCH{1..10}; do
    unset $i
 done
