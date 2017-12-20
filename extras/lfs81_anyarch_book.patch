@@ -1,6 +1,6 @@
-diff -Naur origlfs-8.1/chapter05/binutils-pass1.xml lfs8.1anyarch/chapter05/binutils-pass1.xml
+diff -Naur origlfs-8.1/chapter05/binutils-pass1.xml lfs-8.1any/chapter05/binutils-pass1.xml
 --- origlfs-8.1/chapter05/binutils-pass1.xml	2017-12-19 20:59:12.000000000 +0000
-+++ lfs8.1anyarch/chapter05/binutils-pass1.xml	2017-12-19 21:46:41.315993327 +0000
++++ lfs-8.1any/chapter05/binutils-pass1.xml	2017-12-20 02:25:49.358678966 +0000
 @@ -151,6 +151,7 @@
  
  <screen><userinput remap="install">case $(uname -m) in
@@ -9,9 +9,9 @@ diff -Naur origlfs-8.1/chapter05/binutils-pass1.xml lfs8.1anyarch/chapter05/binu
  esac</userinput></screen>
  
      <para>Install the package:</para>
-diff -Naur origlfs-8.1/chapter05/gcc-pass1.xml lfs8.1anyarch/chapter05/gcc-pass1.xml
+diff -Naur origlfs-8.1/chapter05/gcc-pass1.xml lfs-8.1any/chapter05/gcc-pass1.xml
 --- origlfs-8.1/chapter05/gcc-pass1.xml	2017-12-19 20:59:12.000000000 +0000
-+++ lfs8.1anyarch/chapter05/gcc-pass1.xml	2017-12-19 22:11:12.095052029 +0000
++++ lfs-8.1any/chapter05/gcc-pass1.xml	2017-12-20 23:20:39.836902442 +0000
 @@ -68,7 +68,7 @@
      class="directory">/usr/include</filename> from GCC's include search path.
      Issue:</para>
@@ -21,7 +21,27 @@ diff -Naur origlfs-8.1/chapter05/gcc-pass1.xml lfs8.1anyarch/chapter05/gcc-pass1
  do
    cp -uv $file{,.orig}
    sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&amp;@g' \
-@@ -235,9 +235,18 @@
+@@ -107,6 +107,19 @@
+  ;;
+ esac</userinput></screen>
+ 
++
++<screen><userinput remap="pre">case $(uname -m) in
++  armv5l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpufixme.patch
++ ;;
++  armv7l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpu.patch
++ ;;
++  armv8l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpufixme.patch
++ ;;
++esac</userinput></screen>
++
+ <!--
+     <para>GCC doesn't detect stack protection correctly, which causes problems
+     for the build of Glibc-&glibc-version;, so fix that by issuing the following
+@@ -235,9 +248,18 @@
  
      </variablelist>
  
@@ -41,9 +61,9 @@ diff -Naur origlfs-8.1/chapter05/gcc-pass1.xml lfs8.1anyarch/chapter05/gcc-pass1
  
      <para>Compilation is now complete. At this point, the test suite would
      normally be run, but, as mentioned before, the test suite framework is
-diff -Naur origlfs-8.1/chapter05/gcc-pass2.xml lfs8.1anyarch/chapter05/gcc-pass2.xml
+diff -Naur origlfs-8.1/chapter05/gcc-pass2.xml lfs-8.1any/chapter05/gcc-pass2.xml
 --- origlfs-8.1/chapter05/gcc-pass2.xml	2017-12-19 20:59:12.000000000 +0000
-+++ lfs8.1anyarch/chapter05/gcc-pass2.xml	2017-12-19 22:11:54.064165771 +0000
++++ lfs-8.1any/chapter05/gcc-pass2.xml	2017-12-20 23:21:30.321489526 +0000
 @@ -70,7 +70,7 @@
      use the one installed in <filename
      class="directory">/tools</filename>.</para>
@@ -53,7 +73,26 @@ diff -Naur origlfs-8.1/chapter05/gcc-pass2.xml lfs8.1anyarch/chapter05/gcc-pass2
  do
    cp -uv $file{,.orig}
    sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&amp;@g' \
-@@ -168,6 +168,15 @@
+@@ -93,6 +93,18 @@
+   ;;
+ esac</userinput></screen>
+ 
++<screen><userinput remap="pre">case $(uname -m) in
++  armv5l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpufixme.patch
++ ;;
++  armv7l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpu.patch
++ ;;
++  armv8l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpufixme.patch
++ ;;
++esac</userinput></screen>
++
+     <para>As in the first build of GCC it requires the GMP, MPFR and MPC
+     packages. Unpack the tarballs and move them into the required directory
+     names:</para>
+@@ -168,6 +180,15 @@
  
      </variablelist>
  
@@ -69,9 +108,9 @@ diff -Naur origlfs-8.1/chapter05/gcc-pass2.xml lfs8.1anyarch/chapter05/gcc-pass2
      <para>Compile the package:</para>
  
  <screen><userinput remap="make">make</userinput></screen>
-diff -Naur origlfs-8.1/chapter06/adjusting.xml lfs8.1anyarch/chapter06/adjusting.xml
+diff -Naur origlfs-8.1/chapter06/adjusting.xml lfs-8.1any/chapter06/adjusting.xml
 --- origlfs-8.1/chapter06/adjusting.xml	2017-12-19 20:59:13.000000000 +0000
-+++ lfs8.1anyarch/chapter06/adjusting.xml	2017-12-19 21:46:41.319993440 +0000
++++ lfs-8.1any/chapter06/adjusting.xml	2017-12-20 02:25:49.358678966 +0000
 @@ -16,13 +16,13 @@
  
    <para>First, backup the <filename class="directory">/tools</filename> linker,
@@ -90,9 +129,9 @@ diff -Naur origlfs-8.1/chapter06/adjusting.xml lfs8.1anyarch/chapter06/adjusting
  
    <para>Next, amend the GCC specs file so that it points to the new
    dynamic linker. Simply deleting all instances of <quote>/tools</quote> should
-diff -Naur origlfs-8.1/chapter06/chapter06.xml lfs8.1anyarch/chapter06/chapter06.xml
+diff -Naur origlfs-8.1/chapter06/chapter06.xml lfs-8.1any/chapter06/chapter06.xml
 --- origlfs-8.1/chapter06/chapter06.xml	2017-12-19 20:59:13.000000000 +0000
-+++ lfs8.1anyarch/chapter06/chapter06.xml	2017-12-19 21:47:51.609978587 +0000
++++ lfs-8.1any/chapter06/chapter06.xml	2017-12-20 02:25:49.358678966 +0000
 @@ -69,7 +69,6 @@
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gawk.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="findutils.xml"/>
@@ -101,9 +140,9 @@ diff -Naur origlfs-8.1/chapter06/chapter06.xml lfs8.1anyarch/chapter06/chapter06
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="less.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gzip.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iproute2.xml"/>
-diff -Naur origlfs-8.1/chapter06/creatingdirs.xml lfs8.1anyarch/chapter06/creatingdirs.xml
+diff -Naur origlfs-8.1/chapter06/creatingdirs.xml lfs-8.1any/chapter06/creatingdirs.xml
 --- origlfs-8.1/chapter06/creatingdirs.xml	2017-12-19 20:59:13.000000000 +0000
-+++ lfs8.1anyarch/chapter06/creatingdirs.xml	2017-12-19 21:49:58.605609822 +0000
++++ lfs-8.1any/chapter06/creatingdirs.xml	2017-12-20 02:25:49.358678966 +0000
 @@ -25,6 +25,9 @@
  
  case $(uname -m) in
@@ -114,9 +153,32 @@ diff -Naur origlfs-8.1/chapter06/creatingdirs.xml lfs8.1anyarch/chapter06/creati
  esac
  
  mkdir -v /var/{log,mail,spool}
-diff -Naur origlfs-8.1/chapter06/libcap.xml lfs8.1anyarch/chapter06/libcap.xml
+diff -Naur origlfs-8.1/chapter06/gcc.xml lfs-8.1any/chapter06/gcc.xml
+--- origlfs-8.1/chapter06/gcc.xml	2017-12-19 20:59:13.000000000 +0000
++++ lfs-8.1any/chapter06/gcc.xml	2017-12-20 23:27:05.601388485 +0000
+@@ -51,6 +51,19 @@
+   ;;
+ esac</userinput></screen>
+ 
++<screen><userinput remap="pre">case $(uname -m) in
++  armv5l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpufixme.patch
++ ;;
++  armv7l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpu.patch
++ ;;
++  armv8l)
++    patch -Np1 -i ../gcc-7.2.0-rk3288-cpufixme.patch
++ ;;
++esac</userinput></screen>
++
++esac</userinput></screen>
+     <para>Remove the symlink created earlier as the final gcc includes will be
+     installed here:</para>
+ 
+diff -Naur origlfs-8.1/chapter06/libcap.xml lfs-8.1any/chapter06/libcap.xml
 --- origlfs-8.1/chapter06/libcap.xml	2017-12-19 20:59:13.000000000 +0000
-+++ lfs8.1anyarch/chapter06/libcap.xml	2017-12-19 21:46:41.319993440 +0000
++++ lfs-8.1any/chapter06/libcap.xml	2017-12-20 02:25:49.358678966 +0000
 @@ -47,6 +47,13 @@
  
  <screen><userinput remap="pre">sed -i '/install.*STALIBNAME/d' libcap/Makefile</userinput></screen>
@@ -131,9 +193,9 @@ diff -Naur origlfs-8.1/chapter06/libcap.xml lfs8.1anyarch/chapter06/libcap.xml
      <para>Compile the package:</para>
  
  <screen><userinput remap="make">make</userinput></screen>
-diff -Naur origlfs-8.1/chapter06/revisedchroot.xml lfs8.1anyarch/chapter06/revisedchroot.xml
+diff -Naur origlfs-8.1/chapter06/revisedchroot.xml lfs-8.1any/chapter06/revisedchroot.xml
 --- origlfs-8.1/chapter06/revisedchroot.xml	2017-12-19 20:59:13.000000000 +0000
-+++ lfs8.1anyarch/chapter06/revisedchroot.xml	2017-12-19 21:46:41.319993440 +0000
++++ lfs-8.1any/chapter06/revisedchroot.xml	2017-12-20 02:25:49.358678966 +0000
 @@ -46,12 +46,12 @@
    libraries are from binutils, bzip2, e2fsprogs, flex, libtool, and zlib.  If desired,
    remove them now:</para>
@@ -154,9 +216,9 @@ diff -Naur origlfs-8.1/chapter06/revisedchroot.xml lfs8.1anyarch/chapter06/revis
 +#rm -f /usr/lib/libz.a</userinput></screen>
  
  </sect1>
-diff -Naur origlfs-8.1/chapter08/kernel.xml lfs8.1anyarch/chapter08/kernel.xml
+diff -Naur origlfs-8.1/chapter08/kernel.xml lfs-8.1any/chapter08/kernel.xml
 --- origlfs-8.1/chapter08/kernel.xml	2017-12-19 20:59:14.000000000 +0000
-+++ lfs8.1anyarch/chapter08/kernel.xml	2017-12-19 22:19:58.885489906 +0000
++++ lfs-8.1any/chapter08/kernel.xml	2017-12-20 02:25:49.358678966 +0000
 @@ -210,7 +210,7 @@
  
      <para>Install the modules, if the kernel configuration uses them:</para>
