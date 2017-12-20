@@ -6,9 +6,9 @@
 #
 
 PKG="p11-kit"
-PKG_VERSION="p11-kit-0.23.2.tar.gz"
-PKG_FILE="p11-kit-0.23.2.tar.gz"
-URL="http://p11-glue.freedesktop.org/releases/p11-kit-0.23.2.tar.gz"
+PKG_VERSION="p11-kit-0.23.8.tar.gz"
+PKG_FILE="p11-kit-0.23.8.tar.gz"
+URL="http://github.com/p11-glue/p11-kit/releases/download/0.23.8/p11-kit-0.23.8.tar.gz"
 MD5="3caf26d841df1527d52549e7adc62966"
 for i in PATCH{1..10}; do
    unset $i

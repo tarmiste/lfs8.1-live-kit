@@ -4,7 +4,7 @@
 #
 PKG="blfs-bootscripts"
 PKG_VERSION="20170731"
-PKG_FILE="blfs-bootscripts-${PKG_VERSION}.tar.bz2"
+PKG_FILE="blfs-bootscripts-${PKG_VERSION}.tar.xz"
 URL="http://anduin.linuxfromscratch.org/sources/BLFS/conglomeration/blfs-bootscripts/${PKG_FILE}"
 MD5="feeffb543c42d3a9790d4e77437b57db"
 for i in PATCH{1..10}; do

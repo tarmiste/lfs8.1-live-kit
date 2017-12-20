@@ -9,7 +9,7 @@ PKG="nettle"
 PKG_VERSION="nettle-3.3.tar.gz"
 PKG_FILE="nettle-3.3.tar.gz "
 URL="ftp://ftp.gnu.org/gnu/nettle/nettle-3.3.tar.gz"
-MD5="10f969f78a463704ae73.39978148dbe"
+MD5="10f969f78a463704ae73529978148dbe" 
 for i in PATCH{1..10}; do
    unset $i
 done
