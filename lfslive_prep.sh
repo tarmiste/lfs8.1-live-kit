@@ -9,14 +9,14 @@
 #
 
 set -e
-LFS=/mnt/lfs79live_target
+LFS=/mnt/lfs81live_target
 if [ -d $LFS ]
 then
     echo $LFS already exists, aborting
     exit 1
 fi
 
-LFS_HOST=$HOME/lfs79live_host
+LFS_HOST=$HOME/lfs81live_host
 if [ -d $LFS_HOST ]
 then
     echo $LFS_HOST already exists, aborting
@@ -60,13 +60,13 @@ esac
 #
 mkdir -p $LFS/collateral
 cp extras/jhalfs_20160310_r3858.tar.gz $LFS/collateral
-cp extras/LFS-BOOK-7.9-NOCHUNKS.html $LFS/collateral
-cp extras/blfs-book-7.9-html.tar.bz2 $LFS/collateral
-cp extras/blfs_root_7.9.tar.gz $LFS/collateral
-cp extras/lfs-book-7.9-xml.tar.gz $LFS/collateral
+cp extras/LFS-BOOK-8.1-NOCHUNKS.html $LFS/collateral
+cp extras/blfs-book-8.1-html.tar.bz2 $LFS/collateral
+cp extras/blfs_root_8.1.tar.gz $LFS/collateral
+cp extras/lfs-book-8.1-xml.tar.gz $LFS/collateral
 case $(uname -m) in
     # LFS book patch only needed for ppc...
-    ppc* ) cp extras/lfs79_ppc_arm_book.patch $LFS/collateral
+    ppc* ) cp extras/lfs81_ppc_arm_book.patch $LFS/collateral
     ;;
 esac
 
@@ -89,14 +89,14 @@ case $(uname -m) in
 esac
 
 # LFS book (xml format)
-cp extras/lfs-book-7.9-xml.tar.gz $LFS_HOST
+cp extras/lfs-book-8.1-xml.tar.gz $LFS_HOST
 
 # jhalfs custom configs for building live image
 cp custom_configs/* $LFS_HOST/jhalfs/custom/config
 case $(uname -m) in
     ppc* ) 
         cp custom_ppc_configs/* $LFS_HOST/jhalfs/custom/config
-        cp extras/lfs79_ppc_arm_book.patch $LFS_HOST/
+        cp extras/lfs81_anyarch_book.patch $LFS_HOST/
     ;;
 esac
 
