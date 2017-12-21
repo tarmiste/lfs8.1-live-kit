@@ -30,11 +30,11 @@ fi
 # 2) check for host squashfs-tools and genisoimage.
 # 3) check that user is not root and has needed permissions to
 #   perform the build
-if [[$EUID = 0]]
-then
-    echo This script should not be run as root!
-    exit 1
-fi
+#if [[$EUID = 0]]
+#then
+#    echo This script should not be run as root!
+#    exit 1
+#fi
 # 4) Check that memory size/swap space is adequate.
 #
 
@@ -45,8 +45,8 @@ fi
 # reasonably obtained by downloading.
 #
 mkdir -p $LFS/sources
-cp extras/certdata_20160313.txt $LFS/sources
-cp extras/certdata_20160313.txt $LFS/sources/certdata.txt
+cp extras/certdata_20171217.txt $LFS/sources
+cp extras/certdata_20171217.txt $LFS/sources/certdata.txt
 case $(uname -m) in
     # yaboot only needed for ppc...
     ppc* ) cp extras/yaboot_binary_deb_1.3.16-4.tar.xz $LFS/sources  
@@ -59,7 +59,7 @@ esac
 # patches & the like...
 #
 mkdir -p $LFS/collateral
-cp extras/jhalfs_20160310_r3858.tar.gz $LFS/collateral
+cp extras/jhalfs-2.4.tar.xz $LFS/collateral
 cp extras/LFS-BOOK-8.1-NOCHUNKS.html $LFS/collateral
 cp extras/blfs-book-8.1-html.tar.bz2 $LFS/collateral
 cp extras/blfs_root_8.1.tar.gz $LFS/collateral
@@ -77,7 +77,7 @@ esac
 mkdir $LFS_HOST
 
 # jhalfs
-cp extras/jhalfs_20160310_r3858.tar.gz $LFS_HOST
+cp extras/jhalfs-2.4.tar.xz $LFS_HOST
 tar xf extras/jh* -C $LFS_HOST
 
 # kernel config
@@ -92,7 +92,7 @@ esac
 cp extras/lfs-book-8.1-xml.tar.gz $LFS_HOST
 
 # jhalfs custom configs for building live image
-cp custom_configs/* $LFS_HOST/jhalfs/custom/config
+cp custom_configs/* $LFS_HOST/jhalfs-2.4/custom/config
 case $(uname -m) in
     ppc* ) 
         cp custom_ppc_configs/* $LFS_HOST/jhalfs/custom/config
