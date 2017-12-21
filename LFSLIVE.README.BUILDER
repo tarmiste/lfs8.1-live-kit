@@ -5,12 +5,12 @@ OVERVIEW:
    Building a live image consists of the following steps.  All of these
    steps are done as non-root user (with sudo priveleges)::
 
-   0) Obtain the lfs7.9-live-kit.  (Git clone it or download and unzip the zip file)
+   0) Obtain the lfs8.1-live-kit.  (Git clone it or download and unzip the zip file)
 
-      The lfs7.9-live-kit provides various scripts and config files that are
+      The lfs8.1-live-kit provides various scripts and config files that are
       useful for creating the live image.
      
-   1) cd to the lfs7.9-live-kit directory and run the lfslive_prep.sh script.   
+   1) cd to the lfs8.1-live-kit directory and run the lfslive_prep.sh script.   
  
       This script prepares a target directory and a host directory and
       populates the directories with various various scripts and 
@@ -65,7 +65,7 @@ PREREQUISITES:
 LFSLIVE_PREP.SH:
 
 
-   In the lfs7.9-live-kit directory, run the following command:
+   In the lfs8.1-live-kit directory, run the following command:
 
    ./lfslive_prep.sh
 
@@ -76,8 +76,8 @@ LFSLIVE_PREP.SH:
    a LFS live host build area and another directory to contain
    the LFS live target build area.   These two directories are:
 
-   ~HOME/lfs79live_host
-   /mnt/lfs79live_target
+   ~HOME/lfs81live_host
+   /mnt/lfs81live_target
 
    If either of these two directories already exists, the script
    will abort.   If this happens, review the contents of the existing
@@ -85,7 +85,7 @@ LFSLIVE_PREP.SH:
    then rerun the script.
 
    The host directory will contain a copy of jhalfs, a copy of the LFS
-   7.9 book (xml format), a kernel config file and other files that may
+   8.1 book (xml format), a kernel config file and other files that may
    be useful in creating the live image.
 
    The target directory will contain a collateral folder which contains
@@ -100,15 +100,15 @@ LFSLIVE_PREP.SH:
 
 LFSLIVE BUILD:
 
-   Do: "cd ~HOME/lfs79live_host" 
+   Do: "cd ~HOME/lfs81live_host" 
 
-   Find the tar archive of the LFS 7.9 book (xml format).   It can
+   Find the tar archive of the LFS 8.1 book (xml format).   It can
    be unpacked and used as the book for jhalfs if needed.   Alternatively,
    jhalfs can be configured to download the book from the LFS website.  In
-   this case, the local copy of the LFS 7.9 is not needed and can be 
+   this case, the local copy of the LFS 8.1 is not needed and can be 
    ignored.
 
-   If, and only if,  building for PowerPC, then unpack the LFS 7.9 book 
+   If, and only if,  building for PowerPC, then unpack the LFS 8.1 book 
    tarball and apply the ppc book patch to it.
 
    Find the live kernel config (*-live-config).   It will be used by
@@ -125,7 +125,7 @@ LFSLIVE BUILD:
       custom/config directory with the scripts needed to build the live
       image.
 
-   3) Select build directory of /mnt/lfs79live_target.
+   3) Select build directory of /mnt/lfs81live_target.
 
    4) Select download packages.   
 
@@ -154,11 +154,11 @@ HOST LIVE BUILD
    The jhalfs build has created a host_scripts directory and placed
    3 host scripts in it:
 
-   /mnt/lfs78live_target/host_scripts
+   /mnt/lfs81live_target/host_scripts
 
    To run the host scripts, do:
 
-   export LFS=/mnt/lfs79live_target
+   export LFS=/mnt/lfs81live_target
 
    $LFS/host_scripts/make_live_squashed_root.sh
 
@@ -172,11 +172,11 @@ HOST LIVE BUILD
    to reduce the size of the live image, then move the sources before 
    the make_live_squashed_root step and move them back after.  e.g:
 
-   sudo mv $LFS/sources /mnt/savelfs79sources
+   sudo mv $LFS/sources /mnt/savelfs81sources
 
    $LFS/host_scripts/make_live_squashed_root.sh
 
-   sudo mv /mnt/savelfs79sources $LFS/sources 
+   sudo mv /mnt/savelfs81sources $LFS/sources 
    
    $LFS/host_scripts/make_live_tree.sh
 
