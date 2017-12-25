@@ -45,8 +45,8 @@ fi
 # reasonably obtained by downloading.
 #
 mkdir -p $LFS/sources
-cp extras/certdata_20171217.txt $LFS/sources
-cp extras/certdata_20171217.txt $LFS/sources/certdata.txt
+cp extras/certdata_20171225.txt $LFS/sources
+cp extras/certdata_20171225.txt $LFS/sources/certdata.txt
 case $(uname -m) in
     # yaboot only needed for ppc...
     ppc* ) cp extras/yaboot_binary_deb_1.3.16-4.tar.xz $LFS/sources  
@@ -66,7 +66,7 @@ cp extras/blfs_root_8.1.tar.gz $LFS/collateral
 cp extras/lfs-book-8.1-xml.tar.gz $LFS/collateral
 case $(uname -m) in
     # LFS book patch only needed for ppc...
-    ppc* ) cp extras/lfs81_ppc_arm_book.patch $LFS/collateral
+    ppc* ) cp extras/lfs81_anyarch_book.patch $LFS/collateral
     ;;
 esac
 
