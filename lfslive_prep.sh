@@ -78,7 +78,7 @@ mkdir $LFS_HOST
 
 # jhalfs
 cp extras/jhalfs-2.4.tar.xz $LFS_HOST
-tar xf extras/jh* -C $LFS_HOST
+tar xf extras/jhalfs-2.4.tar.xz -C $LFS_HOST
 
 # kernel config
 case $(uname -m) in
@@ -95,7 +95,7 @@ cp extras/lfs-book-8.1-xml.tar.gz $LFS_HOST
 cp custom_configs/* $LFS_HOST/jhalfs-2.4/custom/config
 case $(uname -m) in
     ppc* ) 
-        cp custom_ppc_configs/* $LFS_HOST/jhalfs/custom/config
+        cp custom_ppc_configs/* $LFS_HOST/jhalfs-2.4/custom/config
         cp extras/lfs81_anyarch_book.patch $LFS_HOST/
     ;;
 esac
