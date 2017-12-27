@@ -11,17 +11,18 @@ diff -Naur lfs-8.1/chapter05/binutils-pass1.xml lfs-8.1any/chapter05/binutils-pa
      <para>Install the package:</para>
 diff -Naur lfs-8.1/chapter05/gcc-pass1.xml lfs-8.1any/chapter05/gcc-pass1.xml
 --- lfs-8.1/chapter05/gcc-pass1.xml	2017-12-19 20:59:12.000000000 +0000
-+++ lfs-8.1any/chapter05/gcc-pass1.xml	2017-12-25 11:09:39.514492412 +0000
-@@ -68,7 +68,7 @@
++++ lfs-8.1any/chapter05/gcc-pass1.xml	2017-12-27 16:33:36.044593251 +0000
+@@ -68,7 +68,8 @@
      class="directory">/usr/include</filename> from GCC's include search path.
      Issue:</para>
  
 -<screen><userinput remap="pre">for file in gcc/config/{linux,i386/linux{,64}}.h
-+<screen><userinput remap="pre">for file in gcc/config/{linux,*/*}.h
++<screen><userinput remap="pre">for file in \
++$(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h -o -name linux-eabi.h -o -name linux-elf.h)
  do
    cp -uv $file{,.orig}
    sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&amp;@g' \
-@@ -105,6 +105,23 @@
+@@ -105,6 +106,23 @@
      sed -e '/m64=/s/lib64/lib/' \
          -i.orig gcc/config/i386/t-linux64
   ;;
@@ -47,17 +48,18 @@ diff -Naur lfs-8.1/chapter05/gcc-pass1.xml lfs-8.1any/chapter05/gcc-pass1.xml
  <!--
 diff -Naur lfs-8.1/chapter05/gcc-pass2.xml lfs-8.1any/chapter05/gcc-pass2.xml
 --- lfs-8.1/chapter05/gcc-pass2.xml	2017-12-19 20:59:12.000000000 +0000
-+++ lfs-8.1any/chapter05/gcc-pass2.xml	2017-12-25 11:09:39.514492412 +0000
-@@ -70,7 +70,7 @@
++++ lfs-8.1any/chapter05/gcc-pass2.xml	2017-12-27 16:34:25.381219511 +0000
+@@ -70,7 +70,8 @@
      use the one installed in <filename
      class="directory">/tools</filename>.</para>
  
 -<screen><userinput remap="pre">for file in gcc/config/{linux,i386/linux{,64}}.h
-+<screen><userinput remap="pre">for file in gcc/config/{linux,*/*}.h
++<screen><userinput remap="pre">for file in \
++$(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h -o -name linux-eabi.h -o -name linux-elf.h)
  do
    cp -uv $file{,.orig}
    sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&amp;@g' \
-@@ -91,6 +91,22 @@
+@@ -91,6 +92,22 @@
      sed -e '/m64=/s/lib64/lib/' \
          -i.orig gcc/config/i386/t-linux64
    ;;
