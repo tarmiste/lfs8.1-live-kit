@@ -173,7 +173,7 @@ diff -Naur lfs-8.1/chapter06/gcc.xml lfs-8.1any/chapter06/gcc.xml
      <para>Remove the symlink created earlier as the final gcc includes will be
 diff -Naur lfs-8.1/chapter06/glibc.xml lfs-8.1any/chapter06/glibc.xml
 --- lfs-8.1/chapter06/glibc.xml	2017-12-19 20:59:13.000000000 +0000
-+++ lfs-8.1any/chapter06/glibc.xml	2017-12-24 21:04:26.754150844 +0000
++++ lfs-8.1any/chapter06/glibc.xml	2017-12-29 15:01:07.094578900 +0000
 @@ -67,6 +67,10 @@
      required for the dynamic loader to function correctly:</para>
  
@@ -185,6 +185,24 @@ diff -Naur lfs-8.1/chapter06/glibc.xml lfs-8.1any/chapter06/glibc.xml
      i?86)    GCC_INCDIR=/usr/lib/gcc/$(uname -m)-pc-linux-gnu/&gcc-version;/include
              ln -sfv ld-linux.so.2 /lib/ld-lsb.so.3
      ;;
+@@ -93,7 +97,6 @@
+ ../configure --prefix=/usr                          \
+              --disable-werror                       \
+              --enable-kernel=&min-kernel;                    \
+-             --enable-stack-protector=strong        \
+              libc_cv_slibdir=/lib
+ unset GCC_INCDIR</userinput></screen>
+ 
+@@ -122,7 +125,8 @@
+           <para>This option increases system security by adding  a known canary
+           (a random integer) to the stack during a function preamble, and checks
+           it when the function returns. If it changed, there was a stack
+-          overflow, and the program aborts.</para>
++          overflow, and the program aborts.  This option fails with powerpc 32
++          bit machines and so is disabled.</para>
+         </listitem>
+       </varlistentry>
+ 
 @@ -204,6 +208,14 @@
  
  <screen><userinput remap="install">make install</userinput></screen>
