@@ -282,6 +282,19 @@ diff -Naur lfs-8.1/chapter06/revisedchroot.xml lfs-8.1any/chapter06/revisedchroo
 +#rm -f /usr/lib/libz.a</userinput></screen>
  
  </sect1>
+diff -Naur lfs-8.1/chapter07/usage.xml lfs-8.1any/chapter07/usage.xml
+--- lfs-8.1/chapter07/usage.xml	2017-12-19 20:59:14.000000000 +0000
++++ lfs-8.1any/chapter07/usage.xml	2018-01-11 18:48:46.524256646 +0000
+@@ -85,6 +85,9 @@
+ 4:2345:respawn:/sbin/agetty tty4 9600
+ 5:2345:respawn:/sbin/agetty tty5 9600
+ 6:2345:respawn:/sbin/agetty tty6 9600
++#
++# modify and enable following line for serial console.
++#s1:2:respawn:/sbin/agetty -L 115200 ttyS0 vt100
+ 
+ # End /etc/inittab</literal>
+ EOF</userinput></screen>
 diff -Naur lfs-8.1/chapter08/kernel.xml lfs-8.1any/chapter08/kernel.xml
 --- lfs-8.1/chapter08/kernel.xml	2017-12-19 20:59:14.000000000 +0000
 +++ lfs-8.1any/chapter08/kernel.xml	2017-12-24 21:04:26.754150844 +0000
