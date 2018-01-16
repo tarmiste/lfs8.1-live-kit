@@ -6,18 +6,18 @@
 #
 
 PKG="busybox"
-PKG_VERSION="busybox-1.20.2.tar.bz2"
-PKG_FILE="busybox-1.20.2.tar.bz2"
-URL="http://www.busybox.net/downloads/busybox-1.20.2.tar.bz2"
+PKG_VERSION="1.20.2"
+PKG_FILE="busybox-${PKG_VERSION}.tar.bz2"
+URL="http://www.busybox.net/downloads/busybox-${PKG_VERSION}.tar.bz2"
 MD5="e025414bc6cd79579cc7a32a45d3ae1c"
 for i in PATCH{1..10}; do
    unset $i
 done
-PATCH1="http://www.busybox.net/downloads/fixes-1.20.2/busybox-1.20.2-sys-resource.patch cfb5d5d7ed1414b5749f2c2ec0bf066a"
+PATCH1="http://www.busybox.net/downloads/fixes-${PKG_VERSION}/busybox-${PKG_VERSION}-sys-resource.patch cfb5d5d7ed1414b5749f2c2ec0bf066a"
 
 ( cat << "xEOFx"
 
-    cat ../busybox-1.20.2-sys-resource.patch |patch -Np1
+    cat ../busybox-${PKG_VERSION}-sys-resource.patch |patch -Np1
     make defconfig
     sed 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' -i .config
     

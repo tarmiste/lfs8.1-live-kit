@@ -6,9 +6,9 @@
 #
 
 PKG="libxml2"
-PKG_VERSION="libxml2-2.9.4.tar.gz"
-PKG_FILE="libxml2-2.9.4.tar.gz"
-URL="ftp://xmlsoft.org/libxml2/libxml2-2.9.4.tar.gz"
+PKG_VERSION="2.9.4"
+PKG_FILE="libxml2-${PKG_VERSION}.tar.gz"
+URL="ftp://xmlsoft.org/libxml2/libxml2-${PKG_VERSION}.tar.gz"
 MD5="ae249165c173b1ff386ee8ad676815f5"
 for i in PATCH{1..10}; do
    unset $i

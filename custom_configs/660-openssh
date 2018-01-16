@@ -6,17 +6,17 @@
 #
 
 PKG="openssh"
-PKG_VERSION="openssh-7.5p1.tar.gz"
-PKG_FILE="openssh-7.5p1.tar.gz"
-URL="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.5p1.tar.gz"
+PKG_VERSION="7.5p1"
+PKG_FILE="openssh-${PKG_VERSION}.tar.gz"
+URL="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-${PKG_VERSION}.tar.gz"
 MD5="652fdc7d8392f112bef11cacf7e69e23"
 for i in PATCH{1..10}; do
    unset $i
 done
-PATCH1="http://www.linuxfromscratch.org/patches/blfs/8.1/openssh-7.5p1-openssl-1.1.0-1.patch f5aa210fd557cac83508ec3a71cfafa1"
+PATCH1="http://www.linuxfromscratch.org/patches/blfs/8.1/openssh-${PKG_VERSION}-openssl-1.1.0-1.patch f5aa210fd557cac83508ec3a71cfafa1"
 
 ( cat << "xEOFx"
-   cat ../openssh-7.5p1-openssl-1.1.0-1.patch |patch -Np1
+   cat ../openssh-${PKG_VERSION}-openssl-1.1.0-1.patch |patch -Np1
    install  -v -m700 -d /var/lib/sshd &&
    chown    -v root:sys /var/lib/sshd &&
    
@@ -37,9 +37,9 @@ PATCH1="http://www.linuxfromscratch.org/patches/blfs/8.1/openssh-7.5p1-openssl-1
    
    install -v -m644    contrib/ssh-copy-id.1 \
                        /usr/share/man/man1              &&
-   install -v -m755 -d /usr/share/doc/openssh-7.5p1     &&
+   install -v -m755 -d /usr/share/doc/openssh-${PKG_VERSION}     &&
    install -v -m644    INSTALL LICENCE OVERVIEW README* \
-                       /usr/share/doc/openssh-7.5p1
+                       /usr/share/doc/openssh-${PKG_VERSION}
    
    #echo "PermitRootLogin no" >> /etc/ssh/sshd_config
    

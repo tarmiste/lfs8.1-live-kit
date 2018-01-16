@@ -7,8 +7,8 @@
 
 PKG="cdrkit"
 PKG_VERSION="1.1.11"
-PKG_FILE="cdrkit-1.1.11.tar.gz"
-URL="http://distfiles.lesslinux.org/cdrkit-1.1.11.tar.gz"
+PKG_FILE="cdrkit-${PKG_VERSION}.tar.gz"
+URL="http://distfiles.lesslinux.org/cdrkit-${PKG_VERSION}.tar.gz"
 
 MD5="efe08e2f3ca478486037b053acd512e9"
 for i in PATCH{1..10}; do

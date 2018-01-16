@@ -6,9 +6,9 @@
 #
 
 PKG="libarchive"
-PKG_VERSION="libarchive-3.3.2.tar.gz"
-PKG_FILE="libarchive-3.3.2.tar.gz"
-URL="http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz"
+PKG_VERSION="3.3.2"
+PKG_FILE="libarchive-${PKG_VERSION}.tar.gz"
+URL="http://www.libarchive.org/downloads/libarchive-${PKG_VERSION}.tar.gz"
 MD5="4583bd6b2ebf7e0e8963d90879eb1b27"
 for i in PATCH{1..10}; do
    unset $i
@@ -16,7 +16,7 @@ done
 PATCH1=""
 
 ( cat << "xEOFx"
-   #patch -Np1 -i ../libarchive-3.3.2-upstream_fixes-1.patch &&
+   #patch -Np1 -i ../libarchive-${PKG_VERSION}-upstream_fixes-1.patch &&
    ./configure --prefix=/usr &&
    make
    #make -k check || true

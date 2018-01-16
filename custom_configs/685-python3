@@ -6,9 +6,9 @@
 #
 
 PKG="python3"
-PKG_VERSION="Python-3.6.2.tar.xz"
-PKG_FILE="Python-3.6.2.tar.xz"
-URL="https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz"
+PKG_VERSION="3.6.2"
+PKG_FILE="Python-${PKG_VERSION}.tar.xz"
+URL="https://www.python.org/ftp/python/${PKG_VERSION}/Python-${PKG_VERSION}.tar.xz"
 MD5="2c68846471994897278364fc18730dd9"
 for i in PATCH{1..10}; do
    unset $i

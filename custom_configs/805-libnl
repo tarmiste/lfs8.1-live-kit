@@ -6,9 +6,9 @@
 #
 
 PKG="libnl"
-PKG_VERSION="libnl-3.3.0.tar.gz"
-PKG_FILE="libnl-3.3.0.tar.gz"
-URL="https://github.com/thom311/libnl/releases/download/libnl3.3.0/libnl-3.3.0.tar.gz"
+PKG_VERSION="3.3.0"
+PKG_FILE="libnl-${PKG_VERSION}.tar.gz"
+URL="https://github.com/thom311/libnl/releases/download/libnl${PKG_VERSION}/libnl-${PKG_VERSION}.tar.gz"
 MD5="ab3ef137cad95bdda5ff0ffa5175dfa5"
 for i in PATCH{1..10}; do
    unset $i

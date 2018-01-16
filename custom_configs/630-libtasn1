@@ -6,9 +6,9 @@
 #
 
 PKG="libtasn1"
-PKG_VERSION="libtasn1-4.12.tar.gz "
-PKG_FILE="libtasn1-4.12.tar.gz "
-URL="http://ftp.gnu.org/gnu/libtasn1/libtasn1-4.12.tar.gz"
+PKG_VERSION="4.12"
+PKG_FILE="libtasn1-${PKG_VERSION}.tar.gz "
+URL="http://ftp.gnu.org/gnu/libtasn1/libtasn1-${PKG_VERSION}.tar.gz"
 MD5="5c724bd1f73aaf4a311833e1cd297b21"
 for i in PATCH{1..10}; do
    unset $i

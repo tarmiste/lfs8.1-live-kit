@@ -6,9 +6,9 @@
 #
 
 PKG="DocBook"
-PKG_VERSION="docbook-xsl-1.79.1.tar.bz2"
-PKG_FILE="docbook-xsl-1.79.1.tar.bz2"
-URL="http://downloads.sourceforge.net/docbook/docbook-xsl-1.79.1.tar.bz2"
+PKG_VERSION="1.79.1"
+PKG_FILE="docbook-xsl-${PKG_VERSION}.tar.bz2"
+URL="http://downloads.sourceforge.net/docbook/docbook-xsl-${PKG_VERSION}.tar.bz2"
 MD5="b48cbf929a2ad85e6672f710777ca7bc"
 for i in PATCH{1..10}; do
    unset $i
