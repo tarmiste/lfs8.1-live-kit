@@ -70,7 +70,7 @@ install -vdm755 /etc/ssl/local
 #        -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
 #        > /etc/ssl/local/CAcert_Class_1_root.pem
 
-install -vm755 make-ca.sh-20170514 /usr/sbin/make-ca.sh
+install -vm755 ../make-ca.sh-20170514 /usr/sbin/make-ca.sh
 cp ../certdata.txt .
 /usr/sbin/make-ca.sh
 
