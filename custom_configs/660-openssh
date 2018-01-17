@@ -16,7 +16,7 @@ done
 PATCH1="http://www.linuxfromscratch.org/patches/blfs/8.1/openssh-${PKG_VERSION}-openssl-1.1.0-1.patch f5aa210fd557cac83508ec3a71cfafa1"
 
 ( cat << "xEOFx"
-   cat ../openssh-${PKG_VERSION}-openssl-1.1.0-1.patch |patch -Np1
+   cat ../openssh-7.5p1-openssl-1.1.0-1.patch |patch -Np1
    install  -v -m700 -d /var/lib/sshd &&
    chown    -v root:sys /var/lib/sshd &&
    

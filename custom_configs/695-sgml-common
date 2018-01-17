@@ -16,7 +16,7 @@ done
 PATCH1="http://www.linuxfromscratch.org/patches/blfs/svn/sgml-common-${PKG_VERSION}-manpage-1.patch 645f3c898abd270a9143036824ae121a"
 
 ( cat << "xEOFx"
-   patch -Np1 -i ../sgml-common-${PKG_VERSION}-manpage-1.patch &&
+   patch -Np1 -i ../sgml-common-0.6.3-manpage-1.patch &&
    autoreconf -f -i
    ./configure --prefix=/usr --sysconfdir=/etc &&
    make

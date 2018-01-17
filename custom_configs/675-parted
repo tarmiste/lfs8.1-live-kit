@@ -16,7 +16,7 @@ done
 PATCH1="http://www.linuxfromscratch.org/patches/blfs/svn/parted-${PKG_VERSION}-devmapper-1.patch 83d297bd20a11b47a4239b101bc26ad2"
 
 ( cat << "xEOFx"
-   patch -Np1 -i ../parted-${PKG_VERSION}-devmapper-1.patch
+   patch -Np1 -i ../parted-3.2-devmapper-1.patch
    ./configure --prefix=/usr --disable-static &&
    make &&
    

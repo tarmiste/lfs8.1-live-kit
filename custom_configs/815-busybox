@@ -17,7 +17,7 @@ PATCH1="http://www.busybox.net/downloads/fixes-${PKG_VERSION}/busybox-${PKG_VERS
 
 ( cat << "xEOFx"
 
-    cat ../busybox-${PKG_VERSION}-sys-resource.patch |patch -Np1
+    cat ../busybox-1.20.2-sys-resource.patch |patch -Np1
     make defconfig
     sed 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' -i .config
     
