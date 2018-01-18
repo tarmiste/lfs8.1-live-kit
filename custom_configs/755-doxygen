@@ -27,7 +27,7 @@ PATCH1=""
    make
    #make -k tests || true
 
-   #cmake -DDOC_INSTALL_DIR=share/doc/doxygen-${PKG_VERSION} -Dbuild_doc=ON .. &&
+   #cmake -DDOC_INSTALL_DIR=share/doc/doxygen-1.8.13 -Dbuild_doc=ON .. &&
    #make docs
 
    make -j1 install &&

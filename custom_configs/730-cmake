@@ -20,7 +20,7 @@ PATCH1=""
                --system-libs       \
                --mandir=/share/man \
                --no-system-jsoncpp \
-               --docdir=/share/doc/cmake-${PKG_VERSION} &&
+               --docdir=/share/doc/cmake-3.4.3 &&
    make
    #make -k  || true
    make -j1 install

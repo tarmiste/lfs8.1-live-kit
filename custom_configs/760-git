@@ -25,7 +25,7 @@ PATCH1=""
 
    make -j1 install
    #make -j1 install-man
-   #make -j1 htmldir=/usr/share/doc/git-${PKG_VERSION} install-html
+   #make -j1 htmldir=/usr/share/doc/git-2.14.1 install-html
 
 xEOFx
 ) > tmp

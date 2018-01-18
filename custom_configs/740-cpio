@@ -28,13 +28,13 @@ PATCH1=""
    #make -C doc ps
    #make -k check || true
    make -j1 install &&
-   install -v -m755 -d /usr/share/doc/cpio-${PKG_VERSION}/html &&
+   install -v -m755 -d /usr/share/doc/cpio-2.12/html &&
    install -v -m644    doc/html/* \
-                       /usr/share/doc/cpio-${PKG_VERSION}/html &&
+                       /usr/share/doc/cpio-2.12/html &&
    install -v -m644    doc/cpio.{html,txt} \
-                       /usr/share/doc/cpio-${PKG_VERSION}
+                       /usr/share/doc/cpio-2.12
    #install -v -m644 doc/cpio.{pdf,ps,dvi} \
-   #                 /usr/share/doc/cpio-${PKG_VERSION}
+   #                 /usr/share/doc/cpio-2.12
    
 xEOFx
 ) > tmp

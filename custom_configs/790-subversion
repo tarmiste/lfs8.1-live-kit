@@ -27,9 +27,9 @@ PATCH1=""
    #make -k check-swig-rb || true
    #make -k check-swig-rb || true
    make -j1 install &&
-   install -v -m755 -d /usr/share/doc/subversion-${PKG_VERSION} &&
+   install -v -m755 -d /usr/share/doc/subversion-1.9.7 &&
    cp      -v -R       doc/* \
-                       /usr/share/doc/subversion-${PKG_VERSION}
+                       /usr/share/doc/subversion-1.9.7
    
 
 xEOFx
